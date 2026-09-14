@@ -96,14 +96,35 @@
 
 ## 安装
 
-把 `shenlun-trainer` 整个目录放进你的 skills 目录：
+只需要把 `shenlun-trainer` 目录放进你的 skills 目录。**推荐用方式一（下 ZIP）**，
+比 `git clone` 快很多。
+
+### 方式一：下载 ZIP（推荐 ⚡）
+
+1. 打开 **https://github.com/HuaXiLF/shenlun-trainer**
+2. 点绿色 **Code** 按钮 → **Download ZIP**
+3. 解压，把 `shenlun-trainer-main` 文件夹改名成 `shenlun-trainer`
+4. 放进 skills 目录（见下方「放哪里」）
+
+> 直链（右键另存为）：
+> `https://codeload.github.com/HuaXiLF/shenlun-trainer/zip/refs/heads/main`
+>
+> 仓库只有 **0.8 MB**，正常网速几秒就好。
+
+### 方式二：git clone
 
 ```bash
-git clone https://github.com/<your-name>/shenlun-trainer.git
+# 浅克隆（不加 --depth 1 会多下历史，没必要）
+git clone --depth 1 https://github.com/HuaXiLF/shenlun-trainer.git
+```
 
+### 放哪里
+
+```bash
 # WorkBuddy
 cp -r shenlun-trainer ~/.workbuddy/skills/
-# Windows: 复制到 C:\Users\<你的用户名>\.workbuddy\skills\
+# Windows（PowerShell）：
+#   robocopy shenlun-trainer "$env:USERPROFILE\.workbuddy\skills\shenlun-trainer" /E
 
 # Claude Code / 其他兼容宿主
 cp -r shenlun-trainer <对应宿主的 skills 目录>/
@@ -112,6 +133,13 @@ cp -r shenlun-trainer <对应宿主的 skills 目录>/
 重启会话即可通过「申论，批改」调用。
 
 **首次使用**：把 `训练记录模板.md` 复制到你的工作目录并改名 `训练记录.md`，之后每次批改会自动追加台账。
+
+> ⚠️ **国内网络提示**：GitHub 在国内的直连速度因地区和运营商差异很大，
+> 如果 `git clone` 卡住或超时，不是仓库的问题（仓库才 0.8 MB），
+> 而是跨境网络问题。建议：
+> - 优先用**方式一（ZIP）**，或
+> - 使用 GitHub 加速镜像（如 `ghproxy` 类服务），或
+> - 让朋友直接把 ZIP 发给你（不到 1 MB，微信/邮件都能发）
 
 ---
 
