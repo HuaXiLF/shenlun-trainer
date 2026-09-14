@@ -96,19 +96,29 @@
 
 ## 安装
 
-只需要把 `shenlun-trainer` 目录放进你的 skills 目录。**推荐用方式一（下 ZIP）**，
-比 `git clone` 快很多。
+只需要把 `shenlun-trainer` 目录放进你的 skills 目录。
 
-### 方式一：下载 ZIP（推荐 ⚡）
+### 方式一：下 ZIP（推荐 ⚡）
 
-1. 打开 **https://github.com/HuaXiLF/shenlun-trainer**
-2. 点绿色 **Code** 按钮 → **Download ZIP**
-3. 解压，把 `shenlun-trainer-main` 文件夹改名成 `shenlun-trainer`
-4. 放进 skills 目录（见下方「放哪里」）
+**推荐走 `codeload.github.com`** —— 它是 GitHub 专门分发仓库压缩包的域名，
+国内连通性通常比 `github.com` 页面更稳。
 
-> 直链（右键另存为）：
-> `https://codeload.github.com/HuaXiLF/shenlun-trainer/zip/refs/heads/main`
->
+浏览器直接打开这个链接就会下载：
+
+**https://codeload.github.com/HuaXiLF/shenlun-trainer/zip/refs/heads/main**
+
+命令行一行搞定：
+
+```bash
+curl -L -o shenlun-trainer.zip https://codeload.github.com/HuaXiLF/shenlun-trainer/zip/refs/heads/main
+```
+
+也可以在仓库页点绿色 **Code** → **Download ZIP**（走的同样是 codeload）。
+
+拿到 ZIP 之后：
+1. 解压，把 `shenlun-trainer-main` 文件夹改名成 `shenlun-trainer`
+2. 放进 skills 目录（见下方「放哪里」）
+
 > 仓库只有 **0.8 MB**，正常网速几秒就好。
 
 ### 方式二：git clone
@@ -134,12 +144,12 @@ cp -r shenlun-trainer <对应宿主的 skills 目录>/
 
 **首次使用**：把 `训练记录模板.md` 复制到你的工作目录并改名 `训练记录.md`，之后每次批改会自动追加台账。
 
-> ⚠️ **国内网络提示**：GitHub 在国内的直连速度因地区和运营商差异很大，
-> 如果 `git clone` 卡住或超时，不是仓库的问题（仓库才 0.8 MB），
-> 而是跨境网络问题。建议：
-> - 优先用**方式一（ZIP）**，或
-> - 使用 GitHub 加速镜像（如 `ghproxy` 类服务），或
-> - 让朋友直接把 ZIP 发给你（不到 1 MB，微信/邮件都能发）
+> ⚠️ **国内网络提示**：GitHub 直连速度因地区和运营商差异很大。
+> 如果 `git clone` 卡住或超时，**不是仓库的问题**（仓库才 0.8 MB），
+> 而是跨境网络问题。建议按顺序尝试：
+> 1. **优先走 codeload**（方式一）—— 下载压缩包通常比 `git clone` 稳
+> 2. 用 GitHub 加速镜像（`ghproxy` 类服务）包一层
+> 3. 让朋友直接把 ZIP 发给你 —— 不到 1 MB，微信 / 邮件都能发
 
 ---
 
