@@ -3,6 +3,8 @@
 > 一个给 **AI Agent** 用的国考 / 省考申论小题训练 Skill。
 > 解决一件事：**观点提炼能力不够，不知道哪些是高频考点、该往哪个方向写。**
 
+**仓库镜像**：GitHub · [**Gitee（国内访问更快 ⚡）**](https://gitee.com/huaxilf/shenlun-trainer)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Skill Format](https://img.shields.io/badge/format-Agent%20Skill-blue)](SKILL.md)
 [![Corpus](https://img.shields.io/badge/corpus-12%20套真题%20·%2060%20题-green)](corpus/)
@@ -98,7 +100,21 @@
 
 只需要把 `shenlun-trainer` 目录放进你的 skills 目录。
 
-### 方式一：下 ZIP（推荐 ⚡）
+### 方式一：Gitee 镜像（国内最快 ⚡⚡）
+
+**国内访问 GitHub 不稳的话，优先用 Gitee 镜像** —— 国内服务器，秒开：
+
+**https://gitee.com/huaxilf/shenlun-trainer**
+
+点右上角 **克隆/下载** → **下载 ZIP**，解压即得。
+
+也可以直接 clone（Gitee 走 22 端口，国内通常很快）：
+
+```bash
+git clone --depth 1 https://gitee.com/huaxilf/shenlun-trainer.git
+```
+
+### 方式二：GitHub 下 ZIP（codeload）
 
 **推荐走 `codeload.github.com`** —— 它是 GitHub 专门分发仓库压缩包的域名，
 国内连通性通常比 `github.com` 页面更稳。
@@ -121,7 +137,7 @@ curl -L -o shenlun-trainer.zip https://codeload.github.com/HuaXiLF/shenlun-train
 
 > 仓库只有 **0.8 MB**，正常网速几秒就好。
 
-### 方式二：git clone
+### 方式三：git clone（GitHub）
 
 ```bash
 # 浅克隆（不加 --depth 1 会多下历史，没必要）
@@ -147,9 +163,10 @@ cp -r shenlun-trainer <对应宿主的 skills 目录>/
 > ⚠️ **国内网络提示**：GitHub 直连速度因地区和运营商差异很大。
 > 如果 `git clone` 卡住或超时，**不是仓库的问题**（仓库才 0.8 MB），
 > 而是跨境网络问题。建议按顺序尝试：
-> 1. **优先走 codeload**（方式一）—— 下载压缩包通常比 `git clone` 稳
-> 2. 用 GitHub 加速镜像（`ghproxy` 类服务）包一层
-> 3. 让朋友直接把 ZIP 发给你 —— 不到 1 MB，微信 / 邮件都能发
+> 1. **优先走 Gitee 镜像**（方式一）—— 国内服务器，最快
+> 2. **次选 codeload**（方式二）—— 下载压缩包通常比 `git clone` 稳
+> 3. 用 GitHub 加速镜像（`ghproxy` 类服务）包一层
+> 4. 让朋友直接把 ZIP 发给你 —— 不到 1 MB，微信 / 邮件都能发
 
 ---
 
