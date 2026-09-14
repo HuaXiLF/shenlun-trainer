@@ -1,0 +1,47 @@
+# ---- 训练产出（个人数据，不入库）----
+训练记录.md
+申论批改-*.md
+个人批改归档/
+
+# ---- 原始语料（版权敏感，不入库）----
+*.pdf
+corpus/raw/
+答案原文-*.md
+
+# ---- 视频 / 音频（体积过大）----
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.mp3
+*.wav
+
+# ---- OS / 编辑器 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# ---- Node ----
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ---- 临时文件 ----
+*.tmp
+*.bak
+*.log
+~$*
