@@ -225,12 +225,13 @@ shenlun-trainer/
 │       └── 双卷对照-湖北×国考高频词.md
 ├── docs/
 │   └── 使用指南.md                    # 详细使用说明
-└── scripts/                          # 工具脚本
+└── scripts/                          # 工具脚本（详见 scripts/README.md）
+    ├── sync_to_skills.py             # ★ 仓库 → skills 目录 同步（单一真相源）
     ├── count_words.py                # ★ 字数核对（阅卷同口径，强制调用）
-    ├── desensitize.py                #   来源标签去敏
+    ├── desensitize.py                #   来源标签去敏（需 --src 原始文件）
     ├── check_residual.py             #   残留扫描
     ├── fix_brackets.py               #   方括号标签修复
-    └── verify_accuracy.py            #   准确性核验
+    └── verify_accuracy.py            #   去敏前后准确性核验（需 --src）
 ```
 
 ---
@@ -340,6 +341,35 @@ shenlun-trainer/
 - 词频统计、考点分类、评分标尺、四步提炼法等均为本项目的原创整理成果。
 
 如果你认为本仓库内容侵犯了你的权益，请提 Issue，我们会及时处理。
+
+---
+
+## 维护：单一真相源
+
+**本仓库是 shenlun-trainer 的唯一真相源。** 所有修改都改在这里，
+然后用同步脚本推到实际被加载的 skills 目录：
+
+```bash
+python scripts/sync_to_skills.py            # 完整同步（自己用）
+python scripts/sync_to_skills.py --lite     # 精简（排除 corpus/docs）
+python scripts/sync_to_skills.py --dry-run  # 先看会动什么
+```
+
+> **为什么必须这样？**
+> 2026-09-17 出过一次事故：仓库和已装目录被两边各自修改，结果**分叉**了 ——
+> 已装版有新增内容、仓库版有修复，最后不得不做人工合并。
+> **教训：只改仓库，然后同步。不要直接改 `~/.workbuddy/skills/` 下的文件。**
+
+维护动作对照：
+
+| 你想做的事 | 怎么做 |
+|:---|:---|
+| 改批改流程 / 评分标尺 | 改 `SKILL.md` → 用同步脚本推送 |
+| 补考点 / 真题 | 改 `references/` 或 `corpus/` → 同步 |
+| 核对答案字数 | `python scripts/count_words.py <文件> --limit 500` |
+| 分享给别人 | 推送到 GitHub / Gitee，或 `--lite` 打包 |
+
+详细的脚本说明见 [`scripts/README.md`](scripts/README.md)。
 
 ---
 

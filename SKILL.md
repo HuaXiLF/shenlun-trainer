@@ -359,6 +359,7 @@ agent_created: true
 |:---|:---|
 | `SKILL.md` | 本文件：命令表 + 训练流程 + 从严评分标尺 + **字数红线** |
 | `scripts/count_words.py` | **字数核对工具（强制调用）**：`python count_words.py <文件> --limit 500`，与阅卷同口径，自动判定硬上限/安全线 |
+| `scripts/sync_to_skills.py` | 仓库 → skills 目录同步（**本仓库是唯一真相源**，改完务必同步） |
 | `references/高频考点雷达.md` | 按题型/话题的高频考点 + 历年统计 |
 | `references/观点提炼方法论.md` | 四步提炼法详解 + 材料定位技巧 + 失分点 |
 | `references/高频表述与结构.md` | 高频动词库、动宾搭配、文种模板、结构模板 |

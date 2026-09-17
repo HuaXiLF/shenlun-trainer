@@ -5,6 +5,14 @@
 把「22-24国考申论参考答案（多机构文本版）.md」中的来源标签
 统一替换为通行拼音缩写或匿名编号。
 
+用法
+----
+    # --src 指向【未去敏】的原始文件（不在本仓库中，需自备）
+    python desensitize.py --src "22-24国考申论参考答案（多机构文本版）.md"
+
+    # 可选参数
+    python desensitize.py --src "原始.md" --dst corpus/xxx.md --report build/r.json
+
 策略：
   1. 只处理【xxx】形式的来源标签，不动正文
   2. 长标签优先匹配（避免「粉笔单淑玲」被「粉笔」先吃掉）
@@ -12,12 +20,16 @@
   4. 个人老师 / 网络ID -> 匿名编号（T01, T02...）
   5. 非来源标签（纯数字、摘要、答案一等）-> 保持不变
 """
-import re
+import argparse
 import json
+import re
+import sys
 from pathlib import Path
 
-SRC = Path(r"D:\study\考公\申论\小作文刷题\22-24国考申论参考答案（多机构文本版）.md")
-DST = Path(r"D:\xiazai\aiwork\workbuddy\2026-09-14-20-35-15\shenlun-trainer\corpus\22-24国考申论参考答案-多机构去敏版.md")
+# 仓库根 = 本脚本所在目录的上一级（脚本位于 <repo>/scripts/）
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_DST = REPO_ROOT / "corpus" / "22-24国考申论参考答案-多机构去敏版.md"
+DEFAULT_REPORT = REPO_ROOT / "build" / "desens_report.json"
 
 # ============================================================
 # 一、机构 -> 通行拼音缩写
@@ -200,6 +212,23 @@ def classify(label):
 
 
 def main():
+    ap = argparse.ArgumentParser(description="机构/人名去敏")
+    ap.add_argument("--src", required=True,
+                    help="未去敏的原始文件路径（必填）")
+    ap.add_argument("--dst", default=str(DEFAULT_DST),
+                    help=f"输出去敏文件路径（默认 {DEFAULT_DST.name}）")
+    ap.add_argument("--report", default=str(DEFAULT_REPORT),
+                    help="去敏报告输出路径")
+    args = ap.parse_args()
+
+    SRC = Path(args.src).expanduser()
+    DST = Path(args.dst).expanduser()
+    REPORT = Path(args.report).expanduser()
+
+    if not SRC.is_file():
+        print(f"[错误] 找不到源文件：{SRC}")
+        return 1
+
     text = SRC.read_text(encoding="utf-8", errors="replace")
 
     mapping = build_mapping()
@@ -251,11 +280,16 @@ def main():
         "unknown_count": len(unknown),
         "unknown": unknown,
     }
-    Path(r"C:\Users\LCH\AppData\Local\Temp\desens_report.json").write_text(
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
+    REPORT.write_text(
         json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    print("OK")
+
+    print(f"完成：映射 {len(changed)} 个标签，未识别 {len(unknown)} 个")
+    print(f"  输出：{DST}")
+    print(f"  报告：{REPORT}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
